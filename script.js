@@ -215,7 +215,7 @@ window.AVALON_REVEAL = (function curtain(){
 
   const render = () => {
     const p = photos[i];
-    img.src = 'assets/photos/full/' + p.f + '.webp';
+    img.src = (window.AVALON_PHOTO_BASE || 'assets/photos/') + 'full/' + p.f + '.webp';
     img.alt = p.a;
     cap.textContent = p.a + '  ·  ' + (i + 1) + ' of ' + photos.length;
   };
