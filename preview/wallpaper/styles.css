@@ -78,6 +78,8 @@ body::after{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
 h1{font:500 clamp(38px,6.4vw,72px)/.95 var(--display);margin:0 0 6px;letter-spacing:-.012em;text-wrap:balance;
   font-optical-sizing:none;font-variation-settings:"opsz" 16}
 h1 em{font-style:italic;font-weight:500;color:var(--pink-deep)}
+.panel--hero p.promise,.promise{font:500 clamp(17px,1.9vw,21px)/1.35 var(--sans);color:var(--ink);
+  margin:0 auto 14px;max-width:42ch;letter-spacing:-.01em;text-wrap:balance}
 .lede{color:var(--ink-soft);margin:0 auto 30px;max-width:52ch;font-size:16.5px}
 .hero-media{margin:clamp(26px,4vw,44px) 0 0}
 .hero-media img{width:100%;height:auto;aspect-ratio:16/8;object-fit:cover;border:8px solid var(--cream);border-radius:2px;
