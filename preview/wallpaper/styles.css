@@ -31,9 +31,9 @@ img{max-width:100%;display:block}
 :focus-visible{outline:3px solid var(--pink);outline-offset:3px}
 
 /* the printed ground */
-.wallpaper-bg{position:fixed;inset:0;width:100%;height:100%;z-index:-2;opacity:.62;pointer-events:none}
+.wallpaper-bg{position:fixed;inset:0;width:100%;height:100%;z-index:-2;pointer-events:none}
 body::after{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
-  background:radial-gradient(130% 85% at 50% 0%,rgba(7,42,32,.08),rgba(7,42,32,.62) 92%)}
+  background:radial-gradient(135% 90% at 50% 0%,rgba(7,42,32,0),rgba(7,42,32,.28) 96%)}
 
 /* nav */
 .nav-wrap{position:fixed;inset:14px 0 auto;z-index:50;pointer-events:none}
@@ -174,12 +174,15 @@ p{margin:0 0 16px}
 .panel--book h2{margin-inline:auto;max-width:26ch}
 
 /* footer */
-.footer{margin-top:clamp(50px,7vw,86px);padding:34px 0 46px;color:var(--cream)}
+/* the pattern runs behind the footer, and cream on a flamingo is only 2.2:1,
+   so the footer sits on its own scrim */
+.footer{margin-top:clamp(50px,7vw,86px);padding:34px 0 46px;color:var(--cream);
+  background:rgba(7,42,32,.92)}
 .footer-grid{display:flex;justify-content:space-between;gap:22px;flex-wrap:wrap;align-items:end;
   border-top:1px solid var(--rule-light);padding-top:26px}
 .footer-mark{display:flex;align-items:center;gap:10px;font:400 22px/1 var(--display);margin:0 0 8px}
 .bird--foot{width:24px;height:24px}
-.footer-addr,.footer-note{font-size:14px;color:rgba(245,239,224,.72);margin:0;max-width:42ch}
+.footer-addr,.footer-note{font-size:14px;color:rgba(245,239,224,.82);margin:0;max-width:42ch}
 .footer-note a{color:var(--cream)}
 
 /* intro curtain + reveal (shared behaviour, retinted for this ground) */
