@@ -3,7 +3,7 @@
   "configurations": [
     {
       "name": "avalon",
-      "runtimeExecutable": "node",
+      "runtimeExecutable": "/Users/lexistephens/.local/node/bin/node",
       "runtimeArgs": [
         ".claude/serve.js"
       ],

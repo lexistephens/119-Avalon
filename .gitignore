@@ -17,3 +17,6 @@ inquiries/
 Thumbs.db
 .vscode/
 .idea/
+
+# Original full-size listing downloads (re-fetch with scripts/fetch-photos.sh)
+assets/photos/raw/

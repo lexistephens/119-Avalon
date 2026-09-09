@@ -128,3 +128,71 @@ const FORM_ENDPOINT = '';
     say('Opening your email app with the inquiry ready to send.');
   });
 })();
+
+/* ── gallery + lightbox ─────────────────────────────────── */
+(function gallery(){
+  const photos = window.AVALON_PHOTOS || [];
+  const grid   = document.querySelector('.gallery');
+  const box    = document.getElementById('lightbox');
+  if (!grid || !box || !photos.length) return;
+
+  const img     = document.getElementById('lb-img');
+  const cap     = document.getElementById('lb-cap');
+  const btnPrev = box.querySelector('.lb-prev');
+  const btnNext = box.querySelector('.lb-next');
+  const btnClose= box.querySelector('.lb-close');
+  const showAll = document.getElementById('show-all');
+  let i = 0, lastFocus = null;
+
+  const render = () => {
+    const p = photos[i];
+    img.src = 'assets/photos/full/' + p.f + '.webp';
+    img.alt = p.a;
+    cap.textContent = p.a + '  ·  ' + (i + 1) + ' of ' + photos.length;
+  };
+
+  const open = (n) => {
+    i = n; lastFocus = document.activeElement;
+    render();
+    box.hidden = false;
+    document.body.style.overflow = 'hidden';
+    btnClose.focus();
+  };
+
+  const close = () => {
+    box.hidden = true;
+    document.body.style.overflow = '';
+    if (lastFocus) lastFocus.focus();
+  };
+
+  const step = (d) => { i = (i + d + photos.length) % photos.length; render(); };
+
+  grid.addEventListener('click', (e) => {
+    const shot = e.target.closest('.shot');
+    if (shot) open(Number(shot.dataset.i));
+  });
+
+  btnPrev.addEventListener('click', () => step(-1));
+  btnNext.addEventListener('click', () => step(1));
+  btnClose.addEventListener('click', close);
+  box.addEventListener('click', (e) => { if (e.target === box) close(); });
+
+  document.addEventListener('keydown', (e) => {
+    if (box.hidden) return;
+    if (e.key === 'Escape')     { close(); }
+    if (e.key === 'ArrowLeft')  { step(-1); }
+    if (e.key === 'ArrowRight') { step(1); }
+    if (e.key === 'Tab') {                       // keep focus inside the dialog
+      const f = [...box.querySelectorAll('button')];
+      const first = f[0], last = f[f.length - 1];
+      if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+      else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+    }
+  });
+
+  if (showAll) showAll.addEventListener('click', () => {
+    grid.classList.add('is-open');
+    showAll.hidden = true;
+    grid.querySelector('.shot[data-extra]')?.focus();
+  });
+})();
