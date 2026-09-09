@@ -70,13 +70,14 @@ body::after{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
 .panel--book{max-width:680px;margin-inline:auto;text-align:center}
 
 .hero{padding:clamp(96px,13vw,150px) 0 0}
-.est{font:400 11px/1 var(--mono);letter-spacing:.26em;text-transform:uppercase;color:var(--leaf);margin:0 0 18px}
-.rowbirds{display:flex;justify-content:center;gap:10px;margin:0 0 18px}
+.est{font:400 11px/1.5 var(--mono);letter-spacing:.24em;text-transform:uppercase;color:var(--leaf);
+  margin:0 0 16px;text-wrap:balance}
+.rowbirds{display:flex;justify-content:center;gap:10px;margin:0 0 6px}
 .rowbirds svg{width:26px;height:26px}
 .rowbirds svg:nth-child(even){transform:scaleX(-1)}
-h1{font:400 clamp(38px,6.4vw,74px)/1.02 var(--display);margin:0 0 18px;letter-spacing:-.01em}
+h1{font:400 clamp(38px,6.4vw,72px)/.95 var(--display);margin:0 0 6px;letter-spacing:-.012em;text-wrap:balance}
 h1 em{font-style:italic;color:var(--pink-deep)}
-.lede{color:var(--ink-soft);margin:0 auto 26px;max-width:44ch;font-size:16px}
+.lede{color:var(--ink-soft);margin:0 auto 30px;max-width:44ch;font-size:16px}
 .hero-media{margin:clamp(26px,4vw,44px) 0 0}
 .hero-media img{width:100%;height:auto;aspect-ratio:16/8;object-fit:cover;border:8px solid var(--cream);border-radius:2px;
   box-shadow:0 40px 80px -46px rgba(0,0,0,.85)}
