@@ -20,3 +20,4 @@ Thumbs.db
 
 # Original full-size listing downloads (re-fetch with scripts/fetch-photos.sh)
 assets/photos/raw/
+assets/photos/br/

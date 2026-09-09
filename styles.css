@@ -19,7 +19,7 @@
   --sans:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
 }
 *,*::before,*::after{box-sizing:border-box}
-html{scroll-behavior:smooth}
+html{scroll-behavior:smooth;scrollbar-gutter:stable}  /* keeps the lock/unlock from shifting layout */
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
 body{margin:0;background:var(--paper);color:var(--ink);font:400 17px/1.6 var(--sans);-webkit-font-smoothing:antialiased}
 img{max-width:100%;display:block;border-radius:var(--r-md)}
@@ -38,14 +38,14 @@ img{max-width:100%;display:block;border-radius:var(--r-md)}
   width:calc(100% - clamp(20px,5vw,40px)*2)}
 .nav-mark{display:inline-flex;align-items:center;gap:9px;font:400 20px/1 var(--serif);
   color:var(--ink);text-decoration:none;letter-spacing:.01em;white-space:nowrap}
-.bird{width:22px;height:32px;color:var(--flamingo);flex:none}
-.nav-mark:hover .bird{color:var(--flamingo-deep)}
+.bird{width:27px;height:27px;flex:none}
+
 .nav-links{list-style:none;display:flex;gap:26px;margin:0;padding:0;margin-right:auto;font-size:14.5px}
 .nav-links a{color:var(--muted);text-decoration:none}
 .nav-links a:hover{color:var(--ink)}
 @media (max-width:760px){.nav-links{display:none}.nav{gap:0;justify-content:space-between}}
 @media (max-width:359px){.nav-mark span{display:none}}
-@media (max-width:420px){.nav-mark{font-size:17px}.bird{width:19px;height:28px}}
+@media (max-width:420px){.nav-mark{font-size:17px}.bird{width:23px;height:23px}}
 
 /* ── pill cta ───────────────────────────────────────────── */
 .pill-cta{display:inline-flex;align-items:center;gap:12px;background:var(--ink);color:var(--paper);
@@ -92,7 +92,7 @@ h1 em{font-style:italic;color:var(--flamingo-deep)}
 .stat dt{font-size:13px;letter-spacing:.09em;text-transform:uppercase;color:var(--muted);margin:0 0 8px}
 .stat dd{margin:0;font:400 clamp(30px,3.4vw,44px)/1 var(--serif);font-variant-numeric:tabular-nums}
 .stat--pink dd{color:var(--flamingo-deep);display:flex;align-items:baseline;gap:8px}
-.bird--stat{width:17px;height:25px;align-self:center}
+.bird--stat{width:22px;height:22px;align-self:center}
 @media (max-width:900px){.stat-strip{grid-template-columns:repeat(3,1fr)}}
 @media (max-width:560px){.stat-strip{grid-template-columns:repeat(2,1fr)}}
 
@@ -115,7 +115,7 @@ p{margin:0 0 18px}
   background:var(--flamingo);opacity:.95}
 .section p.aside{display:flex;gap:16px;align-items:flex-start;margin-top:32px;padding:20px 22px;
   background:var(--paper-2);border-radius:var(--r-md);font-size:15px;color:var(--ink-soft);max-width:none}
-.bird--aside{width:26px;height:38px;flex:none;margin-top:-2px}
+.bird--aside{width:30px;height:30px;flex:none;margin-top:-3px}
 @media (max-width:880px){.house-grid{grid-template-columns:1fr}.house-media .ph--square:last-child{transform:none}}
 @media (max-width:520px){.tick-list{grid-template-columns:1fr}}
 
@@ -198,7 +198,7 @@ p{margin:0 0 18px}
 .footer{padding:56px 0 44px;border-top:1px solid var(--line);margin-top:clamp(60px,8vw,100px)}
 .footer-grid{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;align-items:end}
 .footer-mark{display:flex;align-items:center;gap:11px;font:400 25px/1 var(--serif);margin:0 0 10px}
-.bird--foot{width:24px;height:35px}
+.bird--foot{width:28px;height:28px}
 .footer-addr,.footer-note{font-size:14.5px;color:var(--muted);margin:0;max-width:40ch}
 
 /* ── intro curtain ──────────────────────────────────────── */
@@ -217,3 +217,39 @@ p{margin:0 0 18px}
   transform:translate3d(var(--dx),118vh,0) rotate(calc(var(--rot) + var(--dr)));opacity:0}
 .curtain.is-fast .curtain-bit{transition-duration:.6s,.32s;transition-delay:0ms,.24s}
 @media (prefers-reduced-motion:reduce){.curtain{display:none}}
+
+
+/* ── page reveal, timed against the falling leaves ──────── */
+.pre-reveal .hero-copy > *,
+.pre-reveal .hero-media,
+.pre-reveal .stat-strip,
+.pre-reveal .nav{opacity:0;transform:translateY(22px)}
+.pre-reveal .nav{transform:translateY(-16px)}
+
+.revealing .hero-copy > *,
+.revealing .hero-media,
+.revealing .stat-strip,
+.revealing .nav{opacity:1;transform:none;
+  transition:opacity .85s ease, transform .95s cubic-bezier(.16,.72,.24,1)}
+.revealing .nav{transition-duration:.7s,.8s}
+.revealing .hero-copy > .badge      {transition-delay:.06s}
+.revealing .hero-copy > h1          {transition-delay:.13s}
+.revealing .hero-copy > .lede       {transition-delay:.21s}
+.revealing .hero-copy > .hero-actions{transition-delay:.28s}
+.revealing .hero-media              {transition-delay:.10s}
+.revealing .stat-strip              {transition-delay:.34s}
+@media (prefers-reduced-motion:reduce){
+  .pre-reveal .hero-copy > *,.pre-reveal .hero-media,
+  .pre-reveal .stat-strip,.pre-reveal .nav{opacity:1;transform:none}
+}
+
+/* ── booking card ───────────────────────────────────────── */
+.book-grid{display:grid;grid-template-columns:1fr .95fr;gap:clamp(32px,6vw,72px);align-items:center}
+.book-card{background:#fff;border:1px solid var(--line);border-radius:var(--r-lg);
+  padding:clamp(28px,4vw,40px);text-align:center;box-shadow:0 24px 50px -34px rgba(36,26,30,.45)}
+.bird--book{width:56px;height:56px;margin:0 auto 14px}
+.book-kicker{font-size:13px;letter-spacing:.09em;text-transform:uppercase;color:var(--muted);margin:0 0 22px}
+.pill-cta--book{font-size:16px;padding:12px 12px 12px 26px}
+.book-fine{font-size:13.5px;color:var(--muted);margin:18px 0 0}
+.section p.book-note{font-style:italic;border-left:2px solid var(--flamingo);padding-left:18px;margin-top:26px}
+@media (max-width:820px){.book-grid{grid-template-columns:1fr}}

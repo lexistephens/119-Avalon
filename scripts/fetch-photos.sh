@@ -16,7 +16,7 @@ set -euo pipefail
 cd "$(dirname "$0")/.."
 mkdir -p assets/photos/raw assets/photos/full assets/photos/thumb
 
-BASE="https://ssl.cdn-redfin.com/photo/263/bigphoto/886/906886"
+LISTING="https://www.beachreunion.com/en/properties/68d44c7cdf3a0d00115b0cb9"
 echo "Downloading 28 originals…"
 for i in $(seq 0 27); do
   n=$(printf "%02d" "$i")

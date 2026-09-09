@@ -1,13 +1,8 @@
 /* ─────────────────────────────────────────────────────────
-   119 Avalon — site behaviour
-   CONFIGURE THESE TWO LINES BEFORE GOING LIVE:
-     OWNER_EMAIL  the address inquiries should reach
-     FORM_ENDPOINT a POST endpoint (Formspree, Basin, Netlify Forms…).
-                   Leave empty and the form falls back to opening the
-                   visitor's mail client with everything pre-filled.
+   Flamingo Destination — site behaviour.
+   Booking is handled off-site by Beach Reunion, so there is no
+   form to wire up here.
    ───────────────────────────────────────────────────────── */
-const OWNER_EMAIL   = 'REPLACE-ME@example.com';
-const FORM_ENDPOINT = '';
 
 /* ── intro curtain ──────────────────────────────────────────
    Covers the viewport in palm fronds and flamingos, then drops them
@@ -80,8 +75,10 @@ window.AVALON_REVEAL = (function curtain(){
     </svg>`;
   }
 
-  const bird = (colour) =>
-    `<svg viewBox="0 0 72 104" style="color:${colour}" aria-hidden="true"><use href="#flamingo"/></svg>`;
+  // Twemoji flamingo carries its own colours; vary hue slightly so the flock
+  // does not look stamped from one die.
+  const bird = () =>
+    `<svg viewBox="0 0 36 36" style="filter:hue-rotate(${rand(-14, 14).toFixed(0)}deg)" aria-hidden="true"><use href="#flamingo"/></svg>`;
 
   const el = document.createElement('div');
   el.className = 'curtain';
@@ -115,7 +112,7 @@ window.AVALON_REVEAL = (function curtain(){
         `--dx:${rand(-9, 9).toFixed(1)}vw;` +
         `--dr:${(isBird ? rand(-40, 40) : rand(-150, 150)).toFixed(0)}deg;` +
         `--d:${(xPct / 100 * 700 + rand(0, 190)).toFixed(0)}ms;`;
-      d.innerHTML = isBird ? bird(colour) : (roll > .60 ? bananaLeaf(colour) : frond(colour));
+      d.innerHTML = isBird ? bird() : (roll > .60 ? bananaLeaf(colour) : frond(colour));
       bits.push(d);
     }
   }
@@ -123,27 +120,46 @@ window.AVALON_REVEAL = (function curtain(){
   bits.sort((a, b) => a.classList.contains('is-bird') - b.classList.contains('is-bird'));
   bits.forEach(b => el.appendChild(b));
   (document.body || document.documentElement).prepend(el);
-  document.documentElement.style.overflow = 'hidden';
+  const root = document.documentElement;
+  root.style.overflow = 'hidden';
+  root.classList.add('pre-reveal');   // holds the page back so it can ease in
 
   return new Promise((resolve) => {
     let done = false;
+    // Let the page start easing in while the leaves are still clearing, so the
+    // two motions overlap instead of the site popping in after a dead beat.
+    let revealed = false;
+    const reveal = () => {
+      if (revealed) return;
+      revealed = true;
+      root.classList.remove('pre-reveal');
+      root.classList.add('revealing');
+      // Drop the class once the entrance is over: from then on the page is
+      // styled normally, so nothing can leave content stuck invisible.
+      setTimeout(() => root.classList.remove('revealing'), 1800);
+    };
     const finish = () => {
       if (done) return;
       done = true;
-      document.documentElement.style.overflow = '';
+      reveal();
+      root.style.overflow = '';
       el.remove();
       window.removeEventListener('keydown', skip, true);
       window.removeEventListener('pointerdown', skip, true);
       resolve();
     };
-    const drop = () => {
+    const drop = (fast) => {
       el.classList.add('is-out');
-      setTimeout(finish, 1900);
+      setTimeout(reveal, fast ? 90 : 380);
+      setTimeout(finish, fast ? 780 : 2000);
     };
-    const skip = () => { el.classList.add('is-fast'); drop(); };
+    const skip = () => { el.classList.add('is-fast'); drop(true); };
     window.addEventListener('keydown', skip, true);
     window.addEventListener('pointerdown', skip, true);
-    setTimeout(drop, force ? 999999 : 340);
+    setTimeout(() => drop(false), force ? 999999 : 340);
+    // Watchdog: if anything above throws or never fires, never strand the
+    // visitor on a blank page.
+    if (!force) setTimeout(finish, 8000);
   });
 })();
 
@@ -181,94 +197,6 @@ window.AVALON_REVEAL = (function curtain(){
   (window.AVALON_REVEAL || Promise.resolve()).then(start);
 })();
 
-/* ── inquiry form ───────────────────────────────────────── */
-(function inquiry(){
-  const form   = document.getElementById('inquiry-form');
-  if (!form) return;
-  const status = document.getElementById('form-status');
-
-  const showError = (input, errId, on) => {
-    const err = document.getElementById(errId);
-    if (err) err.hidden = !on;
-    input.setAttribute('aria-invalid', on ? 'true' : 'false');
-  };
-
-  const validate = () => {
-    const el     = form.elements;
-    const name   = el['name'];
-    const email  = el['email'];
-    const arrive = el['arrive'];
-    const depart = el['depart'];
-    let firstBad = null;
-
-    const badName = !name.value.trim();
-    showError(name, 'name-err', badName);
-    if (badName) firstBad = firstBad || name;
-
-    const badEmail = !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email.value.trim());
-    showError(email, 'email-err', badEmail);
-    if (badEmail) firstBad = firstBad || email;
-
-    const badDates = arrive.value && depart.value && depart.value <= arrive.value;
-    showError(depart, 'depart-err', badDates);
-    if (badDates) firstBad = firstBad || depart;
-
-    return firstBad;
-  };
-
-  const say = (msg, state) => {
-    status.textContent = msg;
-    if (state) status.setAttribute('data-state', state);
-    else status.removeAttribute('data-state');
-  };
-
-  form.addEventListener('submit', async (e) => {
-    e.preventDefault();
-
-    if (form.elements['company'].value) return;            // honeypot tripped — silently drop
-
-    const bad = validate();
-    if (bad) { say('Please fix the highlighted fields.', 'error'); bad.focus(); return; }
-
-    const data = Object.fromEntries(new FormData(form).entries());
-    delete data.company;
-
-    if (FORM_ENDPOINT) {
-      say('Sending…');
-      try {
-        const res = await fetch(FORM_ENDPOINT, {
-          method: 'POST',
-          headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
-          body: JSON.stringify(data)
-        });
-        if (!res.ok) throw new Error(res.status);
-        form.reset();
-        say('Thank you — your inquiry is on its way. We’ll be in touch.');
-      } catch (err) {
-        say('That didn’t send. Please email ' + OWNER_EMAIL + ' directly.', 'error');
-      }
-      return;
-    }
-
-    // No endpoint configured: hand off to the visitor's mail client.
-    const body = [
-      'Name: '     + data.name,
-      'Email: '    + data.email,
-      'Arriving: ' + (data.arrive || '—'),
-      'Leaving: '  + (data.depart || '—'),
-      'Guests: '   + (data.guests || '—'),
-      '',
-      data.message || ''
-    ].join('\n');
-
-    window.location.href =
-      'mailto:' + OWNER_EMAIL +
-      '?subject=' + encodeURIComponent('119 Avalon — booking inquiry from ' + data.name) +
-      '&body='    + encodeURIComponent(body);
-
-    say('Opening your email app with the inquiry ready to send.');
-  });
-})();
 
 /* ── gallery + lightbox ─────────────────────────────────── */
 (function gallery(){
