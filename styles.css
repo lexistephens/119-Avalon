@@ -200,3 +200,20 @@ p{margin:0 0 18px}
 .footer-mark{display:flex;align-items:center;gap:11px;font:400 25px/1 var(--serif);margin:0 0 10px}
 .bird--foot{width:24px;height:35px}
 .footer-addr,.footer-note{font-size:14.5px;color:var(--muted);margin:0;max-width:40ch}
+
+/* ── intro curtain ──────────────────────────────────────── */
+.curtain{position:fixed;inset:0;z-index:200;background:var(--paper);overflow:hidden;
+  contain:strict;pointer-events:none}
+.curtain-bit{position:absolute;margin:-14vmin 0 0 -19vmin;transform:rotate(var(--rot));transform-origin:50% 40%;
+  will-change:transform,opacity;
+  transition-property:transform,opacity;
+  transition-duration:1.45s,.45s;
+  transition-timing-function:cubic-bezier(.32,.02,.5,1),ease-in;
+  /* opacity holds until the fall is well under way, so the drop is visible */
+  transition-delay:var(--d,0ms),calc(var(--d,0ms) + 780ms)}
+.curtain-bit svg{width:100%;height:auto;display:block}
+.curtain-bit.is-bird{z-index:2;filter:drop-shadow(0 6px 14px rgba(36,26,30,.22))}
+.curtain.is-out .curtain-bit{
+  transform:translate3d(var(--dx),118vh,0) rotate(calc(var(--rot) + var(--dr)));opacity:0}
+.curtain.is-fast .curtain-bit{transition-duration:.6s,.32s;transition-delay:0ms,.24s}
+@media (prefers-reduced-motion:reduce){.curtain{display:none}}
