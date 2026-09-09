@@ -3,12 +3,12 @@
 :root{
   --jungle:#0B3B2E;
   --jungle-deep:#072a20;
-  --leaf:#1E6E5C;
+  --leaf:#17604B;
   --cream:#F5EFE0;
   --cream-2:#EDE4D2;
   --ink:#0E241D;
   --ink-soft:#3C5A50;
-  --muted:#5A7268;
+  --muted:#44584F;
   --pink:#E0507F;
   --pink-deep:#B32F5C;
   --gold:#EFC978;
@@ -42,7 +42,7 @@ body::after{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
   background:rgba(245,239,224,.94);border:1px solid rgba(14,36,29,.2);
   box-shadow:0 16px 40px -22px rgba(0,0,0,.7)}
 .nav-mark{display:inline-flex;align-items:center;gap:9px;text-decoration:none;color:var(--ink);
-  font:400 19px/1 var(--display);white-space:nowrap}
+  font:500 19px/1 var(--display);white-space:nowrap}
 .bird{width:24px;height:24px;flex:none}
 .nav-links{list-style:none;display:flex;gap:24px;margin:0 auto 0 0;padding:0;
   font:400 12px/1 var(--mono);letter-spacing:.09em;text-transform:uppercase}
@@ -75,8 +75,9 @@ body::after{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
 .rowbirds{display:flex;justify-content:center;gap:10px;margin:0 0 6px}
 .rowbirds svg{width:26px;height:26px}
 .rowbirds svg:nth-child(even){transform:scaleX(-1)}
-h1{font:400 clamp(38px,6.4vw,72px)/.95 var(--display);margin:0 0 6px;letter-spacing:-.012em;text-wrap:balance}
-h1 em{font-style:italic;color:var(--pink-deep)}
+h1{font:500 clamp(38px,6.4vw,72px)/.95 var(--display);margin:0 0 6px;letter-spacing:-.012em;text-wrap:balance;
+  font-optical-sizing:none;font-variation-settings:"opsz" 16}
+h1 em{font-style:italic;font-weight:500;color:var(--pink-deep)}
 .lede{color:var(--ink-soft);margin:0 auto 30px;max-width:52ch;font-size:16.5px}
 .hero-media{margin:clamp(26px,4vw,44px) 0 0}
 .hero-media img{width:100%;height:auto;aspect-ratio:16/8;object-fit:cover;border:8px solid var(--cream);border-radius:2px;
@@ -87,7 +88,8 @@ h1 em{font-style:italic;color:var(--pink-deep)}
   background:rgba(14,36,29,.18);border:1px solid rgba(14,36,29,.18);border-radius:var(--r);overflow:hidden}
 .stat{background:var(--cream);padding:22px 18px;text-align:center}
 .stat dt{font:400 10.5px/1 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin:0 0 9px}
-.stat dd{margin:0;font:400 clamp(26px,3.2vw,40px)/1 var(--display);font-variant-numeric:tabular-nums}
+.stat dd{margin:0;font:500 clamp(26px,3.2vw,40px)/1 var(--display);font-variant-numeric:tabular-nums;
+  font-optical-sizing:none;font-variation-settings:"opsz" 14}
 .stat--pink dd{color:var(--pink-deep);display:flex;align-items:center;justify-content:center;gap:8px}
 .bird--stat{width:20px;height:20px}
 @media (max-width:860px){.stat-strip{grid-template-columns:repeat(3,1fr)}}
@@ -98,7 +100,8 @@ h1 em{font-style:italic;color:var(--pink-deep)}
 /* .panel p is (0,2,0) and would otherwise win over these — keep them above it */
 .panel p.eyebrow,.eyebrow{font:500 11px/1 var(--mono);letter-spacing:.2em;text-transform:uppercase;color:var(--pink-deep);margin:0 0 16px}
 .panel p.eyebrow--light,.eyebrow--light{color:var(--gold)}
-h2{font:400 clamp(26px,3.6vw,44px)/1 var(--display);margin:0 0 10px;letter-spacing:-.01em;max-width:22ch;text-wrap:balance}
+h2{font:500 clamp(26px,3.6vw,44px)/1 var(--display);margin:0 0 10px;letter-spacing:-.01em;max-width:22ch;text-wrap:balance;
+  font-optical-sizing:none;font-variation-settings:"opsz" 14}
 .h2-light{color:var(--cream)}
 p{margin:0 0 16px}
 .panel p{color:var(--ink-soft);max-width:58ch}
@@ -180,7 +183,7 @@ p{margin:0 0 16px}
   background:rgba(7,42,32,.92)}
 .footer-grid{display:flex;justify-content:space-between;gap:22px;flex-wrap:wrap;align-items:end;
   border-top:1px solid var(--rule-light);padding-top:26px}
-.footer-mark{display:flex;align-items:center;gap:10px;font:400 22px/1 var(--display);margin:0 0 8px}
+.footer-mark{display:flex;align-items:center;gap:10px;font:500 22px/1 var(--display);margin:0 0 8px}
 .bird--foot{width:24px;height:24px}
 .footer-addr,.footer-note{font-size:14px;color:rgba(245,239,224,.82);margin:0;max-width:42ch}
 .footer-note a{color:var(--cream)}
