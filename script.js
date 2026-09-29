@@ -309,8 +309,12 @@ window.AVALON_REVEAL = (function curtain(){
     else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
   });
 
-  // returning to a wide viewport must not strand the page scroll-locked
-  matchMedia('(min-width: 901px)').addEventListener('change', (m) => {
-    if (m.matches && !panel.hidden) close(false);
+  // the menu is available at every width now, so there is no breakpoint at
+  // which it should auto-close; a resize must still never leave the page
+  // scroll-locked with the panel shut
+  addEventListener('resize', () => {
+    if (panel.hidden && document.documentElement.style.overflow === 'hidden') {
+      document.documentElement.style.overflow = '';
+    }
   });
 })();
