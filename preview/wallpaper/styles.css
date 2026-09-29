@@ -345,3 +345,19 @@ h2 em,.promise em{font-style:italic;color:var(--pink-deep);font-weight:inherit}
   border-radius:50%;background:var(--pink)}
 @media (max-width:980px){.day{grid-template-columns:1fr 1fr}}
 @media (max-width:560px){.day{grid-template-columns:1fr}}
+
+/* ── the suites ─────────────────────────────────────────── */
+.suites{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:18px}
+.suite{background:var(--cream);border:1px solid rgba(14,36,29,.18);border-radius:var(--r);
+  overflow:hidden;box-shadow:0 26px 60px -40px rgba(0,0,0,.7);display:flex;flex-direction:column}
+.suite img{width:100%;height:auto;aspect-ratio:4/3;object-fit:cover;display:block}
+.suite-body{padding:20px 20px 22px;display:grid;gap:6px;align-content:start}
+.suite-no{font:500 10.5px/1 var(--mono);letter-spacing:.18em;color:var(--pink-deep);margin:0}
+.suite h3{font:400 23px/1.1 var(--display);margin:0;color:var(--ink);
+  font-optical-sizing:none;font-variation-settings:"opsz" 14}
+.panel + .suites{margin-top:16px}
+.suite-meta{font:500 11px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;
+  color:var(--muted);margin:2px 0 6px}
+.suite-line{font-size:14.5px;line-height:1.55;color:var(--ink-soft);margin:0}
+@media (max-width:980px){.suites{grid-template-columns:1fr 1fr}}
+@media (max-width:620px){.suites{grid-template-columns:1fr}}
