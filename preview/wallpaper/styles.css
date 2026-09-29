@@ -320,3 +320,12 @@ p{margin:0 0 16px}
 .nav{justify-content:space-between;gap:14px}
 .nav-mark{margin-right:auto}
 @media (max-width:560px){.nav-book{display:none}}
+
+/* ── audience tags (Ben's) ──────────────────────────────── */
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 18px}
+.tags span{font:500 10.5px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;
+  color:var(--ink-soft);border:1px solid rgba(14,36,29,.22);border-radius:999px;padding:9px 14px}
+
+/* his headings carry an italic accented clause, like the wordmark */
+h2 em,.promise em{font-style:italic;color:var(--pink-deep);font-weight:inherit}
+.h2-light em{color:var(--sand-light,#EFC978)}
