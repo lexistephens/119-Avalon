@@ -297,7 +297,11 @@ window.AVALON_REVEAL = (function curtain(){
 
   burger.addEventListener('click', () => panel.hidden ? open() : close());
   // a chosen link should take you there, not leave the menu sitting open
-  panel.addEventListener('click', (e) => { if (e.target.closest('a')) close(false); });
+  panel.addEventListener('click', (e) => {
+    if (e.target.closest('a')) { close(false); return; }
+    // clicking the dimmed area outside the dropdown closes it
+    if (!e.target.closest('.menu-panel')) close();
+  });
 
   document.addEventListener('keydown', (e) => {
     if (panel.hidden) return;
