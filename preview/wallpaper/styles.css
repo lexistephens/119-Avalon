@@ -361,3 +361,31 @@ h2 em,.promise em{font-style:italic;color:var(--pink-deep);font-weight:inherit}
 .suite-line{font-size:14.5px;line-height:1.55;color:var(--ink-soft);margin:0}
 @media (max-width:980px){.suites{grid-template-columns:1fr 1fr}}
 @media (max-width:620px){.suites{grid-template-columns:1fr}}
+
+/* ── hero: photograph first, panel lapping over it ──────────
+   The wallpaper still frames the photo on all sides, so the flamingos
+   are the first thing you see — the photo sits on them, not over them. */
+.hero{padding-top:clamp(84px,11vw,124px)}
+.hero-media{margin:0}
+.hero-media img{aspect-ratio:16/9}
+.panel--hero{position:relative;z-index:1;margin-top:clamp(-120px,-9vw,-56px)}
+.hero-actions{display:flex;align-items:center;justify-content:center;gap:20px;flex-wrap:wrap}
+.ghost-cta{color:var(--ink);text-decoration:none;font:600 11.5px/1 var(--sans);
+  letter-spacing:.09em;text-transform:uppercase;border-bottom:1px solid rgba(14,36,29,.3);
+  padding-bottom:5px}
+.ghost-cta:hover{color:var(--pink-deep);border-color:var(--pink-deep)}
+.scroll-cue{margin:22px 0 0;display:grid;justify-items:center;gap:8px}
+.scroll-cue span{font:500 10px/1 var(--mono);letter-spacing:.3em;text-transform:uppercase;
+  color:var(--muted)}
+.scroll-cue::after{content:"";width:1px;height:26px;background:rgba(14,36,29,.28)}
+@media (max-width:880px){.panel--hero{margin-top:-40px}.hero-media img{aspect-ratio:4/3}}
+
+/* stat tiles gain icons */
+.stat-ico{display:grid;place-items:center;width:26px;height:26px;margin:0 auto 10px;
+  color:var(--pink-deep)}
+.stat-ico svg{width:22px;height:22px}
+.stat--pink .stat-ico svg{width:20px;height:20px}
+
+/* why guests return */
+.tags--why{margin:4px 0 0}
+.tags--why span{border-color:rgba(179,47,92,.3);color:var(--ink)}

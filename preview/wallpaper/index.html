@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..700;1,6..96,400..600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%A6%A9%3C/text%3E%3C/svg%3E">
-<link rel="stylesheet" href="styles.css?v=11">
+<link rel="stylesheet" href="styles.css?v=12">
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -84,6 +84,10 @@
 
   <section class="hero">
     <div class="wrap">
+      <div class="hero-media">
+        <img src="../../assets/photos/full/pool-house-dusk.webp" width="1200" height="800" fetchpriority="high" decoding="async"
+             alt="The private pool lit at dusk, loungers on the paved courtyard and the house glowing behind it.">
+      </div>
       <div class="panel panel--hero">
         <p class="est">Miramar Beach, Florida</p>
         <div class="rowbirds" aria-hidden="true">
@@ -96,13 +100,13 @@
         <h1>Flamingo <em><span class="destin">Destin</span>ation</em></h1>
         <p class="promise">Gather. <em>Relax.</em> Return.</p>
         <p class="lede">Luxury beach living in Miramar Beach, Florida. A private six-bedroom retreat, a three-minute walk from private beach access — designed for the moments you’ll remember.</p>
-        <a class="pill-cta" href="#book">Reserve your stay <span class="chip" aria-hidden="true">→</span></a>
+        <div class="hero-actions">
+          <a class="pill-cta" href="#book">Reserve your stay <span class="chip" aria-hidden="true">→</span></a>
+          <a class="ghost-cta" href="#gallery">View gallery</a>
+        </div>
+        <p class="scroll-cue" aria-hidden="true"><span>Scroll</span></p>
       </div>
 
-      <div class="hero-media">
-        <img src="../../assets/photos/full/pool-house-dusk.webp" width="1200" height="800" fetchpriority="high" decoding="async"
-             alt="The private pool lit at dusk, loungers on the paved courtyard and the house glowing behind it.">
-      </div>
 
       <nav class="quicknav" aria-label="Jump to a section">
         <a href="#gallery"><span class="qn-ico" aria-hidden="true">
@@ -120,11 +124,11 @@
       </nav>
 
       <dl class="stat-strip">
-        <div class="stat"><dt>Sleeps</dt><dd data-count="18">18</dd></div>
-        <div class="stat"><dt>Bedrooms</dt><dd data-count="6">6</dd></div>
-        <div class="stat"><dt>Baths</dt><dd data-count="6">6</dd></div>
-        <div class="stat"><dt>Pools</dt><dd data-count="1">1</dd></div>
-        <div class="stat stat--pink"><dt>Flamingos</dt><dd>∞<svg class="bird bird--stat" viewBox="0 0 36 36" aria-hidden="true"><use href="#flamingo"/></svg></dd></div>
+        <div class="stat"><span class="stat-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18v-6a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v6"/><path d="M3 18h18"/><path d="M7 10V7a1 1 0 0 1 1-1h3v4"/><path d="M13 10V6h3a1 1 0 0 1 1 1v3"/></svg></span><dt>Sleeps</dt><dd data-count="18">18</dd></div>
+        <div class="stat"><span class="stat-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 20V8l9-5 9 5v12"/><path d="M9 20v-6h6v6"/></svg></span><dt>Bedrooms</dt><dd data-count="6">6</dd></div>
+        <div class="stat"><span class="stat-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h16v3a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4z"/><path d="M6 12V6a2 2 0 0 1 4 0"/><path d="M3 12h18"/></svg></span><dt>Baths</dt><dd data-count="6">6</dd></div>
+        <div class="stat"><span class="stat-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 16c2 0 2-1.4 4-1.4s2 1.4 4 1.4 2-1.4 4-1.4 2 1.4 4 1.4 2-1.4 4-1.4"/><path d="M2 20c2 0 2-1.4 4-1.4s2 1.4 4 1.4 2-1.4 4-1.4 2 1.4 4 1.4 2-1.4 4-1.4"/><path d="M7 14V5a2 2 0 0 1 4 0M13 14V5a2 2 0 0 1 4 0"/></svg></span><dt>Pools</dt><dd data-count="1">1</dd></div>
+        <div class="stat stat--pink"><span class="stat-ico" aria-hidden="true"><svg viewBox="0 0 36 36"><use href="#flamingo"/></svg></span><dt>Flamingos</dt><dd>∞<svg class="bird bird--stat" viewBox="0 0 36 36" aria-hidden="true"><use href="#flamingo"/></svg></dd></div>
       </dl>
     </div>
   </section>
@@ -490,6 +494,26 @@
           <li><span class="day-when">Night</span><h3>Together, still</h3>
             <ul><li>A late swim under the stars</li><li>Movies and family games in the lounge</li></ul></li>
         </ol>
+      </div>
+    </div>
+  </section>
+
+
+  <section id="why" class="section">
+    <div class="wrap">
+      <div class="panel">
+        <p class="eyebrow">/ Why guests return</p>
+        <h2>The moments they <em>write home about</em>.</h2>
+        <p class="section-lede">The phrases that come up again and again in the reviews.</p>
+        <div class="tags tags--why">
+          <span>Beautifully decorated</span>
+          <span>Spotless</span>
+          <span>Perfect for large groups</span>
+          <span>Private beach</span>
+          <span>Amazing communication</span>
+          <span>Spacious layout</span>
+          <span>Would absolutely return</span>
+        </div>
       </div>
     </div>
   </section>
