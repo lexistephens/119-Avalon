@@ -295,3 +295,11 @@ p{margin:0 0 18px}
 .review figcaption span{font-weight:400;color:var(--muted)}
 .reviews-src{font-size:13.5px;color:var(--muted);margin-top:18px}
 @media (max-width:900px){.reviews{grid-template-columns:1fr}}
+
+/* ── wordmark: the house is in Destin, so DESTIN is picked out of
+   "Destination". The whole word is italic and accented; only the
+   DESTIN portion goes to caps, and the caps come from CSS so the DOM
+   text stays "Destin" and screen readers say the word. ── */
+.dest{color:var(--flamingo-deep);font-style:italic}
+.destin{text-transform:uppercase;letter-spacing:.035em}
+.footer-mark .dest{color:var(--flamingo)}

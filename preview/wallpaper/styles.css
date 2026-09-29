@@ -221,3 +221,11 @@ p{margin:0 0 16px}
 .panel--hero p.est,.panel--hero p.lede,.panel--hero p,
 .panel--book p.eyebrow,.panel--book p.book-kicker,.panel--book p.book-fine,.panel--book p{
   margin-left:auto;margin-right:auto}
+
+/* ── wordmark: the house is in Destin, so DESTIN is picked out of
+   "Destination". The whole word is italic and accented; only the
+   DESTIN portion goes to caps, and the caps come from CSS so the DOM
+   text stays "Destin" and screen readers say the word. ── */
+.dest{color:var(--pink-deep);font-style:italic}
+.destin{text-transform:uppercase;letter-spacing:.035em}
+.footer-mark .dest{color:#F09AB6}
