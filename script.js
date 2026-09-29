@@ -265,3 +265,52 @@ window.AVALON_REVEAL = (function curtain(){
     grid.querySelector('.shot[data-extra]')?.focus();
   });
 })();
+
+/* ── mobile menu ────────────────────────────────────────────
+   The nav links used to just disappear below 900px, leaving no way
+   to reach any section on a phone. Guarded so pages without a menu
+   are unaffected.
+   ───────────────────────────────────────────────────────── */
+(function menu(){
+  const burger = document.getElementById('burger');
+  const panel  = document.getElementById('menu');
+  if (!burger || !panel) return;
+
+  const items = () => [...panel.querySelectorAll('a')];
+  let lastFocus = null;
+
+  const open = () => {
+    lastFocus = document.activeElement;
+    panel.hidden = false;
+    burger.setAttribute('aria-expanded', 'true');
+    burger.setAttribute('aria-label', 'Close menu');
+    document.documentElement.style.overflow = 'hidden';
+    items()[0]?.focus();
+  };
+  const close = (restore = true) => {
+    panel.hidden = true;
+    burger.setAttribute('aria-expanded', 'false');
+    burger.setAttribute('aria-label', 'Open menu');
+    document.documentElement.style.overflow = '';
+    if (restore) (lastFocus || burger).focus();
+  };
+
+  burger.addEventListener('click', () => panel.hidden ? open() : close());
+  // a chosen link should take you there, not leave the menu sitting open
+  panel.addEventListener('click', (e) => { if (e.target.closest('a')) close(false); });
+
+  document.addEventListener('keydown', (e) => {
+    if (panel.hidden) return;
+    if (e.key === 'Escape') { close(); return; }
+    if (e.key !== 'Tab') return;
+    const f = [...items(), burger];
+    const first = f[0], last = f[f.length - 1];
+    if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+    else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+  });
+
+  // returning to a wide viewport must not strand the page scroll-locked
+  matchMedia('(min-width: 901px)').addEventListener('change', (m) => {
+    if (m.matches && !panel.hidden) close(false);
+  });
+})();
