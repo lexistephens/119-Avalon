@@ -329,3 +329,19 @@ p{margin:0 0 16px}
 /* his headings carry an italic accented clause, like the wordmark */
 h2 em,.promise em{font-style:italic;color:var(--pink-deep);font-weight:inherit}
 .h2-light em{color:var(--sand-light,#EFC978)}
+
+/* ── a day at Flamingo ──────────────────────────────────── */
+.day{list-style:none;margin:8px 0 0;padding:0;display:grid;gap:14px;
+  grid-template-columns:repeat(4,1fr);counter-reset:d}
+.day > li{background:var(--cream-2);border:1px solid rgba(14,36,29,.16);
+  border-radius:var(--r);padding:20px 18px}
+.day-when{font:500 10.5px/1 var(--mono);letter-spacing:.18em;text-transform:uppercase;
+  color:var(--pink-deep);display:block;margin-bottom:9px}
+.day h3{font:400 20px/1.15 var(--display);margin:0 0 12px;color:var(--ink);
+  font-optical-sizing:none;font-variation-settings:"opsz" 14}
+.day ul{list-style:none;margin:0;padding:0;display:grid;gap:7px}
+.day ul li{position:relative;padding-left:16px;font-size:14px;color:var(--ink-soft);line-height:1.5}
+.day ul li::before{content:"";position:absolute;left:0;top:8px;width:5px;height:5px;
+  border-radius:50%;background:var(--pink)}
+@media (max-width:980px){.day{grid-template-columns:1fr 1fr}}
+@media (max-width:560px){.day{grid-template-columns:1fr}}

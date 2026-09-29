@@ -1,10 +1,7 @@
 # Ben's site — copy transcribed from the screen recording
 
-Source: `ScreenRecording_09-27-2026 18-53-21_1.mov` (157s, 296×640 phone capture,
-lovable.dev). Transcribed from ~55 de-duplicated frames. Anything I could not
-read cleanly is marked `[unread]` rather than guessed at.
-
-His desktop layout is unknown — the recording is mobile only.
+Originally transcribed from the screen recording; **now taken from the live site**
+via the share link, so nothing here is guessed. Sections below are his exact text.
 
 ---
 
@@ -100,8 +97,60 @@ CTAs: RESERVE YOUR STAY · CALL THE HOST
    1 Oct – 1 May, and must be purchased for the entire stay**.
 2. **"Steps from private beach access."** The listing says "3-Min Walk to Private
    Beach" six times. His own day-section says "a three-minute walk".
-3. **Suites all "SLEEPS 2"** — six bedrooms × 2 = 12, against a house that sleeps
-   18. This is what "his don't line up" meant.
+3. ~~Suites all "SLEEPS 2" — totals 12.~~ **Wrong, and it was mine.** I saw only
+   cards 01 and 03 in the video, both "SLEEPS 2", and extrapolated to all six.
+   The live site reads 2+2+2+2+4+6 = **18**, which matches the listing body.
+   His suite numbers are fine.
 4. **"6 parking spaces"** — not in the listing or public records. Unverified.
 
 Distances in Explore are his figures and have not been checked.
+
+---
+
+# Authoritative copy (from the live site)
+
+## Suites — "Six suites, each with a story."
+"Every bedroom is styled with its own point of view — soft palettes, layered
+textures, and details that feel considered rather than decorated."
+
+| # | Name | Sleeps | Bath | Line |
+|---|------|--------|------|------|
+| 01 | Mermaid Suite | 2 | Ensuite | A serene king retreat with a private balcony, sheer linens, and coastal light at every hour. |
+| 02 | Flower Suite | 2 | Ensuite | Feminine and warm — botanical wallpaper, brushed brass, and a king bed dressed in the softest cotton. |
+| 03 | Captain's Suite | 2 | Ensuite | Nautical elegance meets classic Southern hospitality. Deep navy accents and shiplap walls. |
+| 04 | King Suite | 2 | Ensuite | Sky-blue walls, a plush king, and morning light through sheer curtains — pure calm. |
+| 05 | 2nd Mate's Guest Suite | 4 | Shared | Two queens for family or friends, dressed in white cotton with coral accents. |
+| 06 | Bunk Room | 6 | Adjacent | A playful, custom-built bunk room the kids will fight to sleep in. Nautical, bright, unforgettable. |
+
+**Total 18.** His stat tile says "20 GUESTS", so his own site disagrees with
+itself — exactly as the Beach Reunion listing does.
+
+## Amenities (his full list)
+Private Heated Pool · Private Beach Access · Beach Service · Beach Gear Credit ·
+Golf Cart Rentals · Ice Maker · Coffee Station · High-Speed WiFi · Smart TVs ·
+Game Lounge · Outdoor Grill · Fully Equipped Kitchen · Beach Towels ·
+Laundry Room · Parking for 6 · EV Charging · Pet Friendly · Community Pool ·
+Tennis · Pickleball · Basketball
+
+## Why guests return — "The moments they write home about."
+Beautifully Decorated · Spotless · Perfect for Large Groups · Private Beach ·
+Amazing Communication · Spacious Layout · Would Absolutely Return
+
+## Guest reviews — "In their own words."
+One review only, from "James & Katie R. — ANNIVERSARY · SEPTEMBER". It is not
+one of the three real reviews on the Beach Reunion listing, and it repeats the
+"steps away" claim. Treat as placeholder.
+
+## Explore (two entries the video missed)
+- **Publix** — 1.0 MI · 3 MIN DRIVE — "Groceries and everything you forgot to pack."
+- **Destin–Fort Walton Airport (VPS)** — 22 MI · 30 MIN DRIVE — "Your closest regional airport."
+
+## Footer
+119 Avalon Blvd, Miramar Beach, FL · (850) 000-0000 · stay@flamingodestination.com
+Both the phone number and the address line are placeholders on his site.
+
+## Further discrepancies found on the live site
+- **"Golf Cart Rentals"** — his wording implies a paid rental. The Beach Reunion
+  listing says the golf cart is **free**. Ours says complimentary, which matches
+  the listing.
+- **"20 GUESTS"** stat vs his own suites totalling 18.
