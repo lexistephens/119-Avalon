@@ -389,3 +389,10 @@ h2 em,.promise em{font-style:italic;color:var(--pink-deep);font-weight:inherit}
 /* why guests return */
 .tags--why{margin:4px 0 0}
 .tags--why span{border-color:rgba(179,47,92,.3);color:var(--ink)}
+
+/* ── hero headline: his three words, stacked, as the headline ──
+   The wordmark already sits in the nav, so the hero leads on mood the
+   way Ben's does rather than repeating the brand name. */
+h1 span,h1 em{display:block}
+h1 em{font-style:italic;color:var(--pink-deep)}
+.panel--hero h1{margin:4px 0 18px;line-height:.92;letter-spacing:-.02em}
